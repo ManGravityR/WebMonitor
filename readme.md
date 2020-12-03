@@ -71,6 +71,8 @@ Example, `print(monitor.check())`
 * Fix or define correct protocol for host (now used __http__)
 * Create Watcher (endless loop or timer)
 * Optimize code (?)
+* For method `add()` change tuple type to list (?)
+* Create notifications to Telegram bot (?)
 
 ---
 

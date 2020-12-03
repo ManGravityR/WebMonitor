@@ -1,6 +1,5 @@
 from WebMonitor import WebMonitor
 
-
 monitor = WebMonitor(pcf='test')
 monitor.add('example.org', 'yandex.com', 'bing.com')
 monitor.show()
