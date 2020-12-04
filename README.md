@@ -16,7 +16,7 @@ monitor = WebMonitor((str)pcf, (str)TIME_FORMAT)
 - `TIME_FORMAT` - use time.strftime('format') arg notation, default = __"%Y-%m-%d %H:%M:%S"__
 ---
 
-### Add host(s): 
+### Add host(s)
 ```python
 monitor.add('google.com')
 ```
