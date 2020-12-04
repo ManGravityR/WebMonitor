@@ -26,7 +26,7 @@ class WebMonitor:
             open(self.hosts_pcf, 'w')
 
         if not os.path.exists(self.check_results):
-            open(self.hosts_pcf, 'w')
+            open(self.check_results, 'w')
 
     def add(self, *args):
         with open(self.hosts_pcf, 'a', encoding='utf-8') as fh:
