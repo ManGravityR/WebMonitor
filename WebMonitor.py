@@ -14,13 +14,12 @@ RED = '\033[1;31m'
 
 
 class WebMonitor:
-    check_results = 'WebMonitor.check_results.pcf'
-
-    def __init__(self, pcf='WebMonitor'):
+    def __init__(self, pcf='WebMonitor', TIME_FORMAT="%Y-%m-%d %H:%M:%S"):
         self.__ext = '.pcf'
 
         self.hosts_pcf = f'{pcf}{self.__ext}'
         self.check_results = f'{pcf}.check_results{self.__ext}'
+        self.TIME_FORMAT = TIME_FORMAT
 
         if not os.path.exists(self.hosts_pcf):
             open(self.hosts_pcf, 'w')
@@ -86,7 +85,7 @@ class WebMonitor:
                 status = 'failed to check'
                 color = RED
 
-            current_time = strftime("%Y-%m-%d %H:%M:%S")
+            current_time = strftime(self.TIME_FORMAT)
             signal = f'{color}•{WHITE}'
             status = f'{color}{status}{WHITE}'
             grid_data.append([current_time, f'{signal} {host}', status])
