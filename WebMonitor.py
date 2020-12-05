@@ -203,7 +203,6 @@ class WebMonitor:
         for history in histories:
             color = GREEN
 
-            # print(history)
             if history['status_code'] == 0:
                 color = RED
 
