@@ -3,6 +3,10 @@
 ### Requirements
 * Python > 3.8 recommended
 
+Notice:
+* All settings are stored in JSON format, so it's easy to exchange data using the API.
+* JSON file is individual for the instance you create, which allows you to configure different entry points.
+
 ---
 
 ## Usage
