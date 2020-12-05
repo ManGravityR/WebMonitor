@@ -20,7 +20,7 @@ monitor = WebMonitor(pcf='WebMonitor')
 ```python
 monitor.add('google.com')
 ```
-Supported arrays format:
+Supported list format:
 ```python
 monitor.add(['example.org', 'yandex.com', 'bing.com'])
 ```
@@ -44,7 +44,7 @@ Example:
 ```python
 print(monitor.check('intel.com', 'ibm.com'))
 ```
-Or supported arrays format:
+Or supported list format:
 ```python
 print(monitor.check(['amd.com', 'ibm.com']))
 ```
@@ -68,7 +68,7 @@ Example:
 ```python
 monitor.remove('google.com')
 ```
-Or supported arrays format:
+Or supported list format:
 ```python
 monitor.remove(['example.org', 'bing.com'])
 ```
