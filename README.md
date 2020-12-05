@@ -37,17 +37,22 @@ Example:
 print(monitor.check())
 ```
 
+![Check result](https://i.imgur.com/a5vKPky.png)
+
 If you specified a list of hosts, they will be checked and recorded in history. 
 Without adding to the configuration.
 
 Example:
 ```python
-print(monitor.check('intel.com', 'ibm.com'))
+print(monitor.check('yahoo.com', 'ibm.com'))
 ```
 Or supported list format:
 ```python
-print(monitor.check(['amd.com', 'ibm.com']))
+print(monitor.check(['intel.com', 'ibm.com']))
 ```
+
+![Check result](https://i.imgur.com/8mvDUcZ.png)
+
 *Return: hosts list*
 
 ---

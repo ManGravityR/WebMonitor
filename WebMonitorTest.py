@@ -22,21 +22,6 @@ print('-'*10, 'Show hosts test 1')
 show = monitor.show()
 print(show)
 
-# Show history checks
-print('-'*10, 'Show history checks (for all)')
-history = monitor.history()
-print(history)
-print('-'*10, 'Show history checks test 1 (with conditions)')
-history = monitor.history(by=[{'date': strftime("%Y.%m.%d")}, {'host': 'google.com'}])
-print(history)
-print('-'*10, 'Show history checks test 2 (with conditions)')
-history = monitor.history(by=[{'host': 'bing.com'}])
-print(history)
-print('-'*10, 'Show history checks test 3 (with conditions)')
-history = monitor.history(by=[{'id': [2]}, {'id': [1, 3]}])
-print(history)
-
-
 # Check all hosts in added to PCF
 # parameter `force_check` deprecated for all calls
 print('-'*10, 'Check test 1 (Check all hosts in added to PCF)')
@@ -52,6 +37,20 @@ print(check)
 print('-'*10, 'Check test 3  (Check as list)')
 check = monitor.check(['example.org', 'bing.com'])
 print(check)
+
+# Show history checks
+print('-'*10, 'Show history checks (for all)')
+history = monitor.history()
+print(history)
+print('-'*10, 'Show history checks test 1 (with conditions)')
+history = monitor.history(by=[{'date': strftime("%Y.%m.%d")}, {'host': 'google.com'}])
+print(history)
+print('-'*10, 'Show history checks test 2 (with conditions)')
+history = monitor.history(by=[{'host': 'bing.com'}])
+print(history)
+print('-'*10, 'Show history checks test 3 (with conditions)')
+history = monitor.history(by=[{'id': [2]}, {'id': [1, 3]}])
+print(history)
 
 # Removing
 print('-'*10, 'Removing test 1 (Remove as tuple)')
