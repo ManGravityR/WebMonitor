@@ -275,7 +275,7 @@ class WebMonitor:
                         if field in history:
                             if field == 'id' and type(value) == list:
                                 for val in value:
-                                    if history[field] == val:
+                                    if history[field] == int(val):
                                         filter_histories.append(history)
 
                             if field == 'host':
