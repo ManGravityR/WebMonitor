@@ -3,6 +3,8 @@ from time import strftime
 
 from WebMonitor import WebMonitor
 
+print('WebMonitorTest v1.0.2')
+
 monitor = WebMonitor(pcf='test')
 
 # Uncomment for check this
