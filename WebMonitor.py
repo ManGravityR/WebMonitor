@@ -194,7 +194,7 @@ class WebMonitor:
             if response == 'Y':
                 print("You history is cleared.")
                 data[self.__cfg]['history'].clear()
-                self.save(data)
+                self._save(data)
             else:
                 print('Clearing history has been canceled.')
 
