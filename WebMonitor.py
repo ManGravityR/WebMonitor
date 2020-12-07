@@ -19,7 +19,13 @@ class WebMonitor:
         self.__hosts_pcf = f'{pcf}{self.__ext}'
 
         if not os.path.exists(self.__hosts_pcf):
-            open(self.__hosts_pcf, 'w')
+            data_model = {
+                self.__cfg: {
+                    'added_hosts': [],
+                    'history': []
+                }
+            }
+            self._save(data_model)
 
     # @ Add hosts to configuration file
     # Args:

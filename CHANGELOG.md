@@ -1,6 +1,10 @@
 # Changelog for WebMonitor
 
-### 05 Dec 2020
+### 07 Dec 2020 (v 1.0.2)
+#### Critical
+* A JSONDecodeError was thrown while creating the file. Fixed by creating data model in init method.
+
+### 05 Dec 2020 (v 1.0.1)
 #### Critical
 * Remove parameter `TIME_FORMAT` for __class__
 * Remove parameter `force_check` for method `check()`
