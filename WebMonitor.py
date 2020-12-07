@@ -16,9 +16,9 @@ class WebMonitor:
     def __init__(self, pcf='WebMonitor'):
         self.__ext = '.pcf'
         self.__cfg = f'{pcf}'
-        self.__hosts_pcf = f'{pcf}{self.__ext}'
+        self.__storage = f'{pcf}{self.__ext}'
 
-        if not os.path.exists(self.__hosts_pcf):
+        if not os.path.exists(self.__storage):
             data_model = {
                 self.__cfg: {
                     'added_hosts': [],
@@ -71,7 +71,7 @@ class WebMonitor:
         # response user if not list hosts
         if len(hosts) == 0:
             response = input(f"Are you sure you want to clear the host list? [Y/n]\n > ")
-            if response == "":
+            if len(response) == 0 or response == "":
                 response = 'Y'
 
             if response == 'Y':
@@ -144,17 +144,24 @@ class WebMonitor:
                 'status': str(status),
                 'status_code': int(status_code),
             }
-
             data[self.__cfg]['history'].append(history)
 
             current_time = f'{history["date"]} {history["time"]}'
             signal = f'{color}•{WHITE}'
             status = f'{color}{status}{WHITE}'
-            cli_output.append(['{:^26}'.format(current_time), f'{signal} {host}', status])
+            cli_output.append([
+                '{:^24}'.format(current_time),
+                '{:^32}'.format(f'{signal} {host}'),
+                '{:^18}'.format(status)
+            ])
 
         # Out to Cli
-        headers = ['{:^26}'.format('time'), 'host', 'status']
-        table = columnar(cli_output, headers, no_borders=True)
+        headers = [
+            '{:^24}'.format('time'),
+            '{:^32}'.format('host'),
+            '{:^18}'.format('status'),
+        ]
+        table = columnar(cli_output, headers, no_borders=True, justify='c', terminal_width=600)
 
         # Save history
         self._save(data)
@@ -188,7 +195,7 @@ class WebMonitor:
 
         if clear is True:
             response = input(f"Are you sure you want to clear history? [Y/n]\n > ")
-            if response == "":
+            if len(response) == 0 or response == "":
                 response = 'Y'
 
             if response == 'Y':
@@ -216,11 +223,21 @@ class WebMonitor:
             signal = f'{color}•{WHITE}'
             status = f'{color}{history["status"]}{WHITE}'
 
-            cli_output.append(
-                ['{:^6}'.format(history["id"]), '{:^26}'.format(current_time), f'{signal} {history["host"]}', status])
+            cli_output.append([
+                '{:^6}'.format(history["id"]),
+                '{:^24}'.format(current_time),
+                '{:50}'.format(f'{signal} {history["host"]}'),
+                '{:^18}'.format(status)
+            ])
 
-        headers = ['{:^6}'.format('id'), '{:^26}'.format('time'), 'host', 'status']
-        table = columnar(cli_output, headers, no_borders=True)
+        headers = [
+            '{:^6}'.format('id'),
+            '{:^24}'.format('time'),
+            '{:^30}'.format('host'),
+            '{:^18}'.format('status')
+        ]
+
+        table = columnar(cli_output, headers, no_borders=True, justify='c', terminal_width=600)
 
         return table
 
@@ -230,7 +247,7 @@ class WebMonitor:
     # - data: data
     # @ return None
     def _save(self, data):
-        with open(self.__hosts_pcf, "w") as write_file:
+        with open(self.__storage, "w") as write_file:
             json.dump(data, write_file)
 
     # @ private method
@@ -239,7 +256,7 @@ class WebMonitor:
     # - data: data
     # @ return dict(data)
     def _pull(self):
-        with open(self.__hosts_pcf, "r") as content:
+        with open(self.__storage, "r") as content:
             return json.loads(content.read())
 
     @staticmethod

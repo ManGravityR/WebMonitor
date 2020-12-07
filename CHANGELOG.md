@@ -4,6 +4,12 @@
 #### Critical
 * A JSONDecodeError was thrown while creating the file. Fixed by creating data model in init method.
 
+#### Notice
+* `self.__hosts_pcf` renamed to `self.__storage`. Does not affect functions, modified for understanding.
+
+#### Fix
+* Added params `justify='c', terminal_width=600` for optimized table view.
+
 ### 05 Dec 2020 (v 1.0.1)
 #### Critical
 * Remove parameter `TIME_FORMAT` for __class__
