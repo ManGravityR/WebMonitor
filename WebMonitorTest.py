@@ -75,3 +75,4 @@ print(history)
 # History cleared
 history = monitor.history(clear=True)
 print(history)
+
